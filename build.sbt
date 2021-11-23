@@ -3,13 +3,13 @@ import com.typesafe.sbt.SbtMultiJvm.MultiJvmKeys.MultiJvm
 
 organization := "com.sclasen"
 name := "akka-zk-cluster-seed"
-version := "0.1.11-SNAPSHOT"
+version := "1.0.0-SNAPSHOT"
 
-scalaVersion := "2.12.4"
-crossScalaVersions := Seq(scalaVersion.value, "2.11.11")
+scalaVersion := "2.13.0"
+crossScalaVersions := Seq(scalaVersion.value, "2.12.8", "2.11.12")
 
-val akkaVersion = "2.5.9"
-val akkaHttpVersion = "10.0.11"
+val akkaVersion = "2.6.12"
+val akkaHttpVersion = "10.2.7"
 
 val akkaDependencies = Seq(
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
@@ -25,7 +25,7 @@ val exhibitorOptionalDependencies = Seq(
   "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion
 ).map(_ % Provided)
 
-val curatorVersion = "2.12.0"
+val curatorVersion = "5.2.0"
 
 val zkDependencies = Seq(
   "curator-framework",
@@ -39,7 +39,7 @@ val testDependencies = Seq(
   "com.typesafe.akka" %% "akka-testkit" % akkaVersion,
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-cluster" % akkaVersion,
-  "org.scalatest" %% "scalatest" % "3.0.1",
+  "org.scalatest" %% "scalatest" % "3.0.8",
   "com.typesafe.akka" %% "akka-multi-node-testkit" % akkaVersion,
   "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,
   "org.slf4j" % "log4j-over-slf4j" % "1.7.7",
@@ -49,7 +49,7 @@ val testDependencies = Seq(
 
 lazy val rootProject = (project in file(".")).
   settings(
-    libraryDependencies ++= (akkaDependencies ++ exhibitorOptionalDependencies ++ zkDependencies ++ testDependencies),
+    libraryDependencies ++= (akkaDependencies ++ exhibitorOptionalDependencies ++ zkDependencies ++ testDependencies), // Provided
     scalacOptions in Compile ++= Seq("-encoding", "UTF-8", "-deprecation", "-feature", "-unchecked", "-Xlog-reflective-calls", "-Xlint", "-language:postfixOps"),
     javacOptions in Compile ++= Seq("-Xlint:unchecked", "-Xlint:deprecation"),
     parallelExecution in Test := false,
