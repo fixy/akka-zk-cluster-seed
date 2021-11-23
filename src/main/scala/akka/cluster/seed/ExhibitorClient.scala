@@ -75,9 +75,9 @@ object SSL {
 
   lazy val nonValidatingContext: SSLContext = {
     class IgnoreX509TrustManager extends X509TrustManager {
-      def checkClientTrusted(chain: Array[X509Certificate], authType: String) {}
+      def checkClientTrusted(chain: Array[X509Certificate], authType: String): Unit = {}
 
-      def checkServerTrusted(chain: Array[X509Certificate], authType: String) {}
+      def checkServerTrusted(chain: Array[X509Certificate], authType: String): Unit = {}
 
       def getAcceptedIssuers = null
     }
