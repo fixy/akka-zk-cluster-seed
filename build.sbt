@@ -1,7 +1,7 @@
 import com.typesafe.sbt.SbtMultiJvm
 import com.typesafe.sbt.SbtMultiJvm.MultiJvmKeys.MultiJvm
 
-organization := "com.sclasen"
+organization := "com.fixy"
 name := "akka-zk-cluster-seed"
 version := "1.0.0-SNAPSHOT"
 
